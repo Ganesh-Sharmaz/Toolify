@@ -17,6 +17,9 @@ import { SignUpProcess } from "./SignUpProcess";
 import toast from "react-hot-toast";
 import { signUp } from "../features/auth/authSlice";
 import Login from "../Login/Login.jsx";
+import { useEffect, useState } from "react";
+import {auth, onAuthStateChanged} from "../server/server.js"
+
 
 const defaultTheme = createTheme({
     palette: {
@@ -25,6 +28,7 @@ const defaultTheme = createTheme({
 });
 
 export default function SignUp() {
+
     const notify = () => {
         toast.success("Successful signup");
     };
@@ -48,12 +52,13 @@ export default function SignUp() {
                 signUp({ displayName, email, password })
             );
             console.log("Sign up result:", user);
+            localStorage.setItem("loggedIn", "true")
 
             if (user) {
                 // Ensure user is not null or undefined
                 navigate("/qrcodepage");
                 console.log("Navigation to /qrcodepage successful");
-                notify();
+                
             }
         } catch (e) {
             console.error("failed to sign up: ", e);

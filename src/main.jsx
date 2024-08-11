@@ -12,6 +12,9 @@ import { Provider } from 'react-redux'
 import store from "./app/store.js"
 import Login from './components/Login/Login.jsx'
 import ForgotPassword from './components/ForgotPassword/ForgotPassword.jsx'
+import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx'
+import Dynamic from './components/Dynamic/Dynamic.jsx'
+import Variants from './components/Variants/Variants.jsx'
 
 
 
@@ -20,11 +23,17 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
       <Route path='qrcodepage' element={<QRCodePage/>}/>
+      <Route path='dynamic' element={
+        <PrivateRoute>
+          <Dynamic/>
+        </PrivateRoute>
+      }
+      />
       <Route path='about' element={<About/>}/>
       <Route path='contact' element={<Contact/>}/>
       <Route path='signup' element={<SignUp/>}/>
       <Route path='login' element={<Login/>}/>
-      
+      <Route path='variants' element={<Variants/>}/>      
       
       
     </Route>
