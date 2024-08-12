@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
-import "./QRCode.css";
 import toast, { Toaster } from "react-hot-toast";
 // import { toPng } from "html-to-image";
 // import {QRCodeCanvas, QRCodeSVG} from 'qrcode.react';
@@ -21,6 +20,8 @@ import {
 } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 import LoginNotification from "../LoginNotification/LoginNotification.jsx";
+import PhoneQRCode from "../QRCodePages/PhoneQRCode/PhoneQRCode.jsx";
+import EmailQRCode from "../QRCodePages/EmailQRCode/EmailQRCode.jsx";
 
 function QRCodePage() {
     const navigate = useNavigate();
@@ -60,9 +61,10 @@ function QRCodePage() {
         }
     };
 
+
     return (
         <>
-            <div className=" h-screen flex justify-center">
+            <div className=" font-poppins h-screen flex justify-center bg-main-bg">
                 <LoginNotification />
                 <Toaster position="top-right" />
                 <div className="flex flex-col items-center">
@@ -290,7 +292,9 @@ function QRCodePage() {
                                 <Download />
                             </Button>
                         </div>
+
                     </div>
+                    
                 </div>
             </div>
         </>

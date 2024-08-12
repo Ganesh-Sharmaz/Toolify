@@ -17,11 +17,9 @@ import {
 import { MailIcon } from "./MailIcon.jsx";
 import { LockIcon } from "./LockIcon.jsx";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
-const Login = () => {
-    
-
+const Login = ({ children }) => {
     const navigate = useNavigate();
 
     const [password, setPassword] = useState("");
@@ -29,42 +27,59 @@ const Login = () => {
     const [email, setEmail] = useState("");
 
     const auth = getAuth();
-    console.log(email, password);
+
+    const goToSignUp = () => {
+        navigate("/signup");
+    };
 
     const handleLogin = (email, password) => {
         console.log("email: ", email);
+        console.log("password: ",password)
+        const email1 = email
+        const password1 = password
         // console.log(auth)
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredentials) => {
-                console.log("working one: ", auth);
-                console.log("working one: ", email);
-                console.log("working one: ", password);
-                const user = userCredentials.user;
-                console.log("user logged in successfully: ", user);
+        if (email1 && password1) {
+            signInWithEmailAndPassword(auth, email1, password1)
+                .then((userCredentials) => {
+                    console.log("working one: ", auth);
+                    console.log("working one: ", email1);
+                    console.log("working one: ", password1);
+                    const user = userCredentials.user;
+                    console.log("user logged in successfully: ", user);
+                    console.log(user.displayName);
 
-                localStorage.setItem("loggedIn", "true")
+                    localStorage.setItem("loggedIn", "true");
+                    // using next code for the re-render of the header
+                    localStorage.setItem("isLog", "true")
+                    localStorage.setItem("person", user.displayName);
 
-                if (user) {
-                    navigate("/qrcodepage");
-                    console.log("Navigation to qrcodepage successfull");
-                }
-            })
-            .catch((error) => {
-                console.log("error code : ", error.code);
-                console.log("error message : ", error.message);
-            });
+                    if (user) {
+                        navigate("/qrcodepage");
+                        console.log("Navigation to qrcodepage successfull");
+                    }
+                })
+                .catch((e) => {
+                    toast.error("Enter email and password");
+
+                    console.log("error code : ", e.code);
+                    console.log("error message : ", e.message);
+                });
+        } else {
+            toast.error("Enter credentials!");
+        }
     };
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (
         <>
+            <Toaster position="top-right" />
             <Button onPress={onOpen} color="primary">
-                already have an account? sign in
+                {children}
             </Button>
             <Modal
                 backdrop={"blur"}
-                className=" bg-airbnb text-white"
+                className=" font-poppins bg-airbnb text-white"
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}
                 placement="top-center"
@@ -122,6 +137,7 @@ const Login = () => {
                                             <ForgotPassword />
                                         </Link>
                                         <Button
+                                            onPress={onClose}
                                             onClick={() =>
                                                 handleLogin(email, password)
                                             }
@@ -140,7 +156,11 @@ const Login = () => {
                                 >
                                     Close
                                 </Button>
-                                <Button color="primary" onPress={onClose}>
+                                <Button
+                                    color="primary"
+                                    onClick={goToSignUp}
+                                    onPress={onClose}
+                                >
                                     Sign in
                                 </Button>
                             </ModalFooter>

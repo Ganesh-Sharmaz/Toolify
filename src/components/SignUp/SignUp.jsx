@@ -14,16 +14,17 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { SignUpProcess } from "./SignUpProcess";
-import toast from "react-hot-toast";
+import toast, {Toaster} from "react-hot-toast";
 import { signUp } from "../features/auth/authSlice";
 import Login from "../Login/Login.jsx";
 import { useEffect, useState } from "react";
 import {auth, onAuthStateChanged} from "../server/server.js"
+// import { Toaster } from "react-hot-toast";
 
 
 const defaultTheme = createTheme({
     palette: {
-        mode: "dark",
+        mode: "light",
     },
 });
 
@@ -47,17 +48,26 @@ export default function SignUp() {
         console.log(email, password);
 
         try {
+            if(!email || !password){
+                console.log('Enter email and password')
+                toast.error("Enter Credentials")
+                return
+            }
             console.log(typeof email, typeof password);
             const user = await dispatch(
                 signUp({ displayName, email, password })
             );
             console.log("Sign up result:", user);
             localStorage.setItem("loggedIn", "true")
+            // using next code for the re-render of the header
+            localStorage.setItem("isLog", "true")
 
-            if (user) {
-                // Ensure user is not null or undefined
-                navigate("/qrcodepage");
-                console.log("Navigation to /qrcodepage successful");
+            
+                if (user) {
+                    // Ensure user is not null or undefined
+                    navigate("/qrcodepage");
+                    console.log("Navigation to /qrcodepage successful");
+                    
                 
             }
         } catch (e) {
@@ -67,6 +77,7 @@ export default function SignUp() {
 
     return (
         <ThemeProvider theme={defaultTheme}>
+            <Toaster position="top-right" />
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
@@ -104,7 +115,7 @@ export default function SignUp() {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
-                                    required
+                                    required= {true}
                                     fullWidth
                                     id="lastName"
                                     label="Last Name"
