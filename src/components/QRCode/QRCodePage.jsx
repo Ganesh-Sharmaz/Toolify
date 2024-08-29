@@ -4,9 +4,12 @@ import toast, { Toaster } from "react-hot-toast";
 // import { toPng } from "html-to-image";
 // import {QRCodeCanvas, QRCodeSVG} from 'qrcode.react';
 
+// import "./QRPage.css"
+import { Tabs, Tab, Chip, Card, CardBody } from "@nextui-org/react";
+
 import { QRCode } from "react-qrcode-logo";
 import { color } from "framer-motion";
-import { Download } from "@mui/icons-material";
+import { Close, Download } from "@mui/icons-material";
 import Login from "../Login/Login.jsx";
 
 import {
@@ -22,6 +25,7 @@ import { useNavigate } from "react-router-dom";
 import LoginNotification from "../LoginNotification/LoginNotification.jsx";
 import PhoneQRCode from "../QRCodePages/PhoneQRCode/PhoneQRCode.jsx";
 import EmailQRCode from "../QRCodePages/EmailQRCode/EmailQRCode.jsx";
+import NormalQRCode from "../QRCodePages/NormalQR/NormalQRCode.jsx";
 
 function QRCodePage() {
     const navigate = useNavigate();
@@ -61,239 +65,110 @@ function QRCodePage() {
         }
     };
 
+    const [isVisible, setIsVisible] = useState(true);
+
+    const closeDiv = () => {
+        setIsVisible(false);
+    };
 
     return (
         <>
-            <div className=" font-poppins h-screen flex justify-center bg-main-bg">
+            <div
+                id="qrBody"
+                className=" bg-white font-inter w-full flex-col flex  justify-center items-center "
+            >
                 <LoginNotification />
-                <Toaster position="top-right" />
+                <Toaster position="bottom-right" />
+                {isVisible && (
+                    <div className=" relative mt-3 hover:shadow-md hover:-translate-y-[2px] transition-all ease-in-out w-[1000px] rounded-lg flex font-inter flex-col items-center justify-center text-text2 p-5 pb-10">
+                        <p className="text-[18px] font-bold">No Ads here 🤗</p>
+                        <p className=" text-[16px] flex">
+                            Instead, you can give us a
+                            <p className="pl-1 font-semibold text-[#30a1c3] hover:text-title2 cursor-pointer">
+                                share on Instagram
+                            </p>
+                        </p>
+                        <button
+                            className=" absolute top-0 right-0 pt-1 pr-4"
+                            onClick={closeDiv} 
+                        >
+                            <Close/>
+                        </button>
+                    </div>
+                )}
+
+                {/* div containting qr options and qr details */}
                 <div className="flex flex-col items-center">
-                    <p className=" text-center py-3 text-air-h4 text-[18px]">
-                        Convert your links into a QR Code in one click!
-                    </p>
-                    {/* entering details for qr code */}
-                    <div className="flex flex-col gap-y-2">
-                        <form onSubmit={handleSubmit}>
-                            <label
-                                className=" hover:outline-sky-800 flex flex-col items-center gap-y-4"
-                                htmlFor="text"
+                    {/* start of the qr options */}
+
+                    <div className=" mt-3 flex items-center w-full flex-col">
+                        <Tabs
+                            className=""
+                            color="primary"
+                            variant="bordered"
+                            radius="full"
+                            aria-label="Options"
+                        >
+                            <Tab
+                                className=" "
+                                key="photos"
+                                title={
+                                    <div className="  flex items-center space-x-2">
+                                        <span className="text-text2">
+                                            Normal
+                                        </span>
+                                    </div>
+                                }
                             >
-                                <input
-                                    id="input"
-                                    className=" shadow rounded h-12  md:w-[500px] px-4 text-air-h4 border-air-border bg-airbnb border-2 flex items-center w-52"
-                                    // type="url"
-                                    placeholder="Enter any text"
-                                    value={text}
-                                    onChange={(e) => {
-                                        if (e.target.type) {
-                                            setText(e.target.value);
-                                        }
-                                    }}
-                                />
-                            </label>
-                        </form>
-                    </div>
-                    {/* containing qr code */}
-                    <div className="flex flex-col items-center">
-                        <div className="flex gap-6">
-                            {/* Qr code div */}
-                            <div className=" p-5 w-fit bg-airbnb-footer my-10 rounded-md">
-                                <QRCode
-                                    ref={ref}
-                                    ecLevel="H"
-                                    size={300}
-                                    quietZone={10}
-                                    logoPaddingStyle="circle"
-                                    logoPadding={10}
-                                    bgColor="white"
-                                    logoOpacity={1}
-                                    qrStyle="squares"
-                                    value={text}
-                                />
-
-                                {/* <QRCode
-                                eyeColor={"#ff7124"}
-                                ref={ref}
-                                fgColor="#f2d59f"
-                                logoImage="https://www.svgrepo.com/show/1320/rocket.svg"
-                                ecLevel="H"
-                                size={300}
-                                quietZone={10}
-                                logoPaddingStyle="circle"
-                                logoPadding={10}
-                                bgColor="white"
-                                logoOpacity={1}
-                                qrStyle="squares"
-                                value={text}
-                            /> */}
-                                {/* <QRCode
-                                eyeColor={"#1c274c"}
-                                ref={ref}
-                                fgColor="#8d93a5"
-                                logoImage="https://www.svgrepo.com/show/528107/cart-large-2.svg"
-                                ecLevel="H"
-                                size={300}
-                                quietZone={10}
-                                logoPaddingStyle="circle"
-                                logoPadding={10}
-                                bgColor="white"
-                                logoOpacity={1}
-                                qrStyle="squares"
-                                value={text}
-                            /> */}
-                                {/* <QRCode
-                                eyeColor={["#B13589", "#C62F94", "#FB8A2E"]}
-                                ref={ref}
-                                fgColor="#E2425C"
-                                logoImage="https://www.svgrepo.com/show/452229/instagram-1.svg"
-                                ecLevel="H"
-                                size={300}
-                                quietZone={10}
-                                logoPaddingStyle="circle"
-                                logoPadding={10}
-                                bgColor="white"
-                                logoOpacity={1}
-                                qrStyle="squares"
-                                value={text}
-                            /> */}
-                                {/* <QRCode
-                            eyeColor={"black"}
-                            
-                            ref={ref}
-                            fgColor="black"
-                            logoImage="https://www.svgrepo.com/show/512317/github-142.svg"
-                            ecLevel="H"
-                            size={300}
-                            quietZone={10}
-                            logoPaddingStyle="circle"
-                            logoPadding={10}
-                            bgColor="white"
-                            logoOpacity={1}
-                            qrStyle="squares"
-                            value={text}
-                        /> */}
-                                {/* <QRCode
-                            eyeColor={[
-                                "#34A853",
-                                "#EA4335",
-                                "#4285F4"
-                            ]}
-                            
-                            ref={ref}
-                            fgColor="#FBBC04"
-                            logoImage="https://www.svgrepo.com/show/353822/google-pay-icon.svg"
-                            ecLevel="H"
-                            size={300}
-                            quietZone={10}
-                            logoPaddingStyle="circle"
-                            logoPadding={10}
-                            bgColor="white"
-                            logoOpacity={1}
-                            qrStyle="squares"
-                            value={text}
-                        /> */}
-                            </div>
-                            {/* qr sidebar */}
-                            <div className=" h-[360px] w-[120px] bg-airbnb-footer my-10 rounded-md flex items-center justify-center flex-col gap-[15px] ">
-                                <Modal
-                                    backdrop={"blur"}
-                                    isOpen={isOpen}
-                                    onOpenChange={onOpenChange}
-                                >
-                                    <ModalContent>
-                                        {(onClose) => (
-                                            <>
-                                                <ModalHeader className="flex flex-col gap-1">
-                                                    You need to Log in to access
-                                                    the dynamic QR Codes
-                                                </ModalHeader>
-                                                <ModalBody>
-                                                    <Login>Log in</Login>
-                                                    <Button
-                                                        onPress={
-                                                            handleNavigation
-                                                        }
-                                                        type="solid"
-                                                        color="primary"
-                                                    >
-                                                        sign up
-                                                    </Button>
-                                                </ModalBody>
-                                                <ModalFooter>
-                                                    <Button
-                                                        color="danger"
-                                                        variant="light"
-                                                        onPress={onClose}
-                                                    >
-                                                        Close
-                                                    </Button>
-                                                    <Button
-                                                        color="primary"
-                                                        onPress={onClose}
-                                                    >
-                                                        Action
-                                                    </Button>
-                                                </ModalFooter>
-                                            </>
-                                        )}
-                                    </ModalContent>
-                                </Modal>
-                                <Button
-                                    className=" w-[100px] h-[100px] p-0 rounded"
-                                    onPress={onOpen}
-                                >
-                                    <div className=" bg-airbnb rounded">
-                                        <img
-                                            className=" bg-cover rounded"
-                                            src="https://res-console.cloudinary.com/deyqddomr/media_explorer_thumbnails/d424b25b8622ec93753a611e7bf2be07/detailed"
-                                            alt="rocket Qr"
-                                        />
+                                <Card className="bg-white  w-[1200px] shadow hover:shadow-md ">
+                                    <CardBody>
+                                        <NormalQRCode />
+                                    </CardBody>
+                                </Card>
+                            </Tab>
+                            <Tab
+                                key="music"
+                                title={
+                                    <div className="flex items-center space-x-2">
+                                        <span className="text-text2">
+                                            Videos
+                                        </span>
                                     </div>
-                                </Button>
-                                <Button
-                                    className=" w-[100px] h-[100px] p-0 rounded"
-                                    onPress={onOpen}
-                                >
-                                    <div className=" bg-airbnb rounded">
-                                        {" "}
-                                        <img
-                                            className=" bg-cover rounded"
-                                            src="https://res-console.cloudinary.com/deyqddomr/media_explorer_thumbnails/7f3cd0abbbc5744a7768576704ec59b5/detailed"
-                                            alt="Instagram Qr"
-                                        />
-                                    </div>
-                                </Button>
-                                <Button
-                                    className=" w-[100px] h-[100px] p-0 rounded"
-                                    onPress={onOpen}
-                                >
-                                    <div className=" bg-airbnb rounded">
-                                        <img
-                                            className=" bg-cover rounded"
-                                            src="https://res-console.cloudinary.com/deyqddomr/media_explorer_thumbnails/03129445152708ee58e407c290befd28/detailed"
-                                            alt="cart Qr"
-                                        />
-                                    </div>
-                                </Button>
-                            </div>
-                        </div>
-                        <div>
-                            <Button
-                                variant="solid"
-                                size="md"
-                                // aria-setsize={2xl}
-
-                                color="primary"
-                                className=" scale-110 w-32"
-                                // className=" shadow-md outline-airbnbpara outline-double text-air-h4 p-2 px-5 rounded-full hover:outline-blue-900 hover:outline-double outline-2 "
-                                onClick={handleDownload}
+                                }
                             >
-                                Download
-                                <Download />
-                            </Button>
-                        </div>
-
+                                <Card isBlurred className=" w-[1200px]">
+                                    <CardBody>
+                                        Ut enim ad minim veniam, quis nostrud
+                                        exercitation ullamco laboris nisi ut
+                                        aliquip ex ea commodo consequat. Duis
+                                        aute irure dolor in reprehenderit in
+                                        voluptate velit esse cillum dolore eu
+                                        fugiat nulla pariatur.
+                                    </CardBody>
+                                </Card>
+                            </Tab>
+                            <Tab
+                                key="videos"
+                                title={
+                                    <div className="flex items-center space-x-2">
+                                        <span className="text-text2">
+                                            Videos
+                                        </span>
+                                    </div>
+                                }
+                            >
+                                <Card className="bg-card-background w-[1200px]">
+                                    <CardBody>
+                                        Excepteur sint occaecat cupidatat non
+                                        proident, sunt in culpa qui officia
+                                        deserunt mollit anim id est laborum.
+                                    </CardBody>
+                                </Card>
+                            </Tab>
+                        </Tabs>
                     </div>
+                    {/* end of the qr options */}
+
                     
                 </div>
             </div>

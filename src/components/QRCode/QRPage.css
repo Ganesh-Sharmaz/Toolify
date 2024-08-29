@@ -1,0 +1,7 @@
+#qrBody {
+  background-image: url('https://res-console.cloudinary.com/deyqddomr/media_explorer_thumbnails/4f1bf6aad6e5a3785dbf65bafa31f86c/detailed');
+  background-size: cover; /* Ensures the image covers the entire page */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-position: center; /* Centers the image */
+  background-attachment: fixed; /* Keeps the background fixed when scrolling */
+}

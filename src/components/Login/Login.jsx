@@ -56,6 +56,11 @@ const Login = ({ children }) => {
                     if (user) {
                         navigate("/qrcodepage");
                         console.log("Navigation to qrcodepage successfull");
+                        console.log("Re-rendering the entire page");
+                        setTimeout(() => {
+                            window.location.reload()
+                        }, 3000);
+                        
                     }
                 })
                 .catch((e) => {
@@ -73,7 +78,7 @@ const Login = ({ children }) => {
 
     return (
         <>
-            <Toaster position="top-right" />
+            <Toaster position="bottom-right" />
             <Button onPress={onOpen} color="primary">
                 {children}
             </Button>

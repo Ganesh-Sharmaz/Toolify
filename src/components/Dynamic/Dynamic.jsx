@@ -15,6 +15,8 @@ function Dynamic() {
       console.log(localStorage.getItem('loggedIn'))
       // using next code for the re-render of the header
       localStorage.setItem("isLog", "false")
+      window.location.reload()
+      console.log("page reloaded")
     }).catch((error) => {
       console.log("An error has occured: ", error)
     })

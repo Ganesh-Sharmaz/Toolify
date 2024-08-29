@@ -18,14 +18,20 @@ const LoginNotification = () => {
         })
         // console.log(person)
         console.log(isLoggedIn);
-        if (isLoggedIn) {
+        if (isLoggedIn != null && person != null) {
+            console.log(
+                "Working in notification"
+            );
+            
             notify();
             welcome();
             localStorage.removeItem("loggedIn");
+            
+            
         }
     }, []);
     return <Toaster
-    position="top-right"
+    position="bottom-right"
     />;
 };
 
