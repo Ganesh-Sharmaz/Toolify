@@ -15,6 +15,8 @@ import ForgotPassword from './components/ForgotPassword/ForgotPassword.jsx'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx'
 import Dynamic from './components/Dynamic/Dynamic.jsx'
 import Variants from './components/Variants/Variants.jsx'
+import Construction from './components/Construction/Construction.jsx'
+import Home from './components/Home/Home.jsx'
 
 
 
@@ -22,6 +24,8 @@ import Variants from './components/Variants/Variants.jsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
+      <Route path='' element={<Home/>}/>
+
       <Route path='qrcodepage' element={<QRCodePage/>}/>
       <Route path='dynamic' element={
         <PrivateRoute>
@@ -33,7 +37,8 @@ const router = createBrowserRouter(
       <Route path='contact' element={<Contact/>}/>
       <Route path='signup' element={<SignUp/>}/>
       <Route path='login' element={<Login/>}/>
-      <Route path='variants' element={<Variants/>}/>      
+      <Route path='variants' element={<Variants/>}/> 
+      <Route path='construction' element={<Construction/>} />    
       
       
     </Route>

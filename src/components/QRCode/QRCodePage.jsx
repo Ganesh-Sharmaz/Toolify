@@ -75,21 +75,21 @@ function QRCodePage() {
         <>
             <div
                 id="qrBody"
-                className=" bg-white font-inter w-full flex-col flex  justify-center items-center "
+                className=" bg-white font-inter w-full  flex-col flex  justify-center items-center "
             >
                 <LoginNotification />
                 <Toaster position="bottom-right" />
                 {isVisible && (
                     <div className=" relative mt-3 hover:shadow-md hover:-translate-y-[2px] transition-all ease-in-out w-[1000px] rounded-lg flex font-inter flex-col items-center justify-center text-text2 p-5 pb-10">
-                        <p className="text-[18px] font-bold">No Ads here 🤗</p>
-                        <p className=" text-[16px] flex">
+                        <p className=" animate-load text-[18px] font-bold">No Ads here 🤗</p>
+                        <p className="  text-[16px] flex">
                             Instead, you can give us a
                             <p className="pl-1 font-semibold text-[#30a1c3] hover:text-title2 cursor-pointer">
                                 share on Instagram
                             </p>
                         </p>
                         <button
-                            className=" absolute top-0 right-0 pt-1 pr-4"
+                            className=" absolute top-0 right-0 mt-1 mr-4 rounded-full hover:bg-[#eef0f1]"
                             onClick={closeDiv} 
                         >
                             <Close/>
