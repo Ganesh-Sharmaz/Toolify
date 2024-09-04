@@ -8,11 +8,11 @@ import './App.css'
 function Layout() {
   return (
     <>
-    <div id='qrBody'>
+    
     <Header/>
     <Outlet/>
     <Footer/>
-    </div>
+    
     
     </>
   )

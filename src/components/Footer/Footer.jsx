@@ -6,22 +6,24 @@ function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <div className=" px-14 py-6 bg-background2 font-inter ">
-            <div className="flex w-full pb-5">
-                <div className="w-1/3 pr-3">
-                    <div className="   cursor-pointer text-[70px] font-inter font-bold text-title2  flex   ">
+        <div className=" pt-3 w-full px-5 md:px-14 md:py-6 bg-background2 font-inter ">
+            <div className="md:flex w-full pb-5">
+                <div className="md:w-1/3 md:pr-7 flex flex-col md:block md:items-center">
+                    <NavLink to=''>
+                    <div className="  md:py-3  cursor-pointer md:text-[70px] text-lg font-inter font-bold text-title2  flex   ">
                         <img
-                            className=" w-[77px] px-3"
+                            className=" md:w-[77px] w-5 mr-2  "
                             src="/src/assets/tool-svgrepo-com (1).svg"
                             alt=""
                         />
                         Toolify
                     </div>
-                    <p className=" py-5 text-[18px] text-pretty font-inter text-[#595a5b]">
+                    </NavLink>
+                    <p className=" md:py-5 text-[18px] pt-1 text-pretty font-inter text-[#595a5b]">
                         Our microservices are tiny, mighty, and ready for you to
                         enjoy—give them a whirl!
                     </p>
-                    <ul className="flex gap-3">
+                    <ul className="py-3 flex gap-3">
                         <li className="flex items-center justify-center cursor-pointer">
                             <svg
                                 className="w-[25px] fill-[#595a5c]  hover:fill-black hover:text-blue-500  font-extrabold"
@@ -58,10 +60,10 @@ function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className=" text-text2 flex justify-around w-2/3  ">
+                <div className=" text-text2 md:flex justify-around md:w-2/3  ">
                     <div className=" flex-1 ">
-                        <p className="text-[14px]  font-bold py-4">Services</p>
-                        <ul className="text-[14px] space-y-1">
+                        <p className="md:text-[14px] text-xl  font-bold md:py-4 pb-1 ">Services</p>
+                        <ul className="md:text-[14px] md:space-y-1">
                             <li>
                                 <NavLink to="/qrcodepage"><a className="border-b-1">QR Code Generator</a></NavLink>
                             </li>
@@ -72,8 +74,8 @@ function Footer() {
                         </ul>
                     </div>
                     <div className=" flex-1">
-                        <p className="text-[14px]  font-bold py-4">Links</p>
-                        <ul className="text-[14px] space-y-1 ">
+                        <p className="md:text-[14px] text-xl  font-bold md:py-4 pb-1 pt-3 ">Links</p>
+                        <ul className="md:text-[14px] md:space-y-1 ">
                             <li className="">
                                 
                                 <NavLink to=""><a className="border-b-1"> Home </a></NavLink>
@@ -91,10 +93,10 @@ function Footer() {
                         </ul>
                     </div>
                     <div className=" flex-1">
-                        <p className="text-[14px]  font-bold py-4">
+                        <p className="md:text-[14px] text-xl  font-bold md:py-4 pb-1 pt-3">
                             Developers
                         </p>
-                        <ul className="text-[14px] space-y-1">
+                        <ul className="md:text-[14px] md:space-y-1">
                             <li>
                                 <a href="https://github.com/Ganesh-Sharmaz" className="border-b-1">Ganesh Sharma</a>
                             </li>
@@ -102,11 +104,11 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="text-[#595a5c] w-full border-t-1 py-5 flex justify-between">
+            <div className="text-[#595a5c] w-full border-t-1 py-5 space-y-2 md:space-y-0 md:flex justify-between">
                 <div>
-                    <p className=" cursor-default">© {currentYear} · Toolify</p>
+                    <p className=" cursor-default">© {currentYear} · Toolify LLC. All Rights Reserved. Seriously.</p>
                 </div>
-                <div><p className="flex gap-1">We are learning about Terms of use, Privacy Policy and Licensing <p className=" text-shadow-sm">😤</p></p></div>
+                <div className=""><p className="flex gap-1">Terms of Use, Privacy Policy, Licensing—because the government said we had to.<p className=" text-shadow-sm">😤</p></p></div>
             </div>
         </div>
     );

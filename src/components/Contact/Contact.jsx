@@ -1,8 +1,9 @@
 import React from 'react'
+import Construction from '../Construction/Construction'
 
 function Contact() {
   return (
-    <div>Contact</div>
+    <Construction/>
   )
 }
 

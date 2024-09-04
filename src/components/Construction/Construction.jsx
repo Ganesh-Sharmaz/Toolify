@@ -1,7 +1,9 @@
 // import React, from "react";
 import ComingSoon from "./ComingSoon";
 import { useState } from "react";
-import { Close, Download } from "@mui/icons-material";
+import { Close, Download, GitHub } from "@mui/icons-material";
+import Marquee from "react-fast-marquee";
+import {motion} from "framer-motion"
 
 function Construction() {
     const [isVisible, setIsVisible] = useState(true);
@@ -12,31 +14,69 @@ function Construction() {
 
     return (
         <>
-            <div className="flex flex-col ">
-                <div className=" bg-white h-screen w-full flex justify-start   ">
-                    <ComingSoon />
-                    <div className=" pl-10 text-text2 w-full flex justify-center bg-[#ffffff] pt-[66px] ">
-                        <div className=" relative  flex flex-col text-pretty">
-                            <p className="text-[100px] h-[140px] font-inter font-bold">
-                                Whoops! 🙂‍↕️
-                            </p>
-                            <p className="text-7xl font-medium font-amster">
-                                Our developer is currently
-                            </p>
-                            <p className="text-7xl w-fit font-medium font-amster">
-                                binge-watching instead of coding. Please be
-                                patient!
-                            </p>
-                            <p className="text-3xl text-pretty font-amster text-blue-500">
-                                but hey, if you're a developer feel free to
-                                contribute 🤗
-                            </p>
+            <div className="flex flex-col text-text2 bg-white font-poppins font-bold  text-2xl">
+                <Marquee pauseOnHover className="">
+                    <div className="w-full gap-12 flex overflow-hidden text-pretty">
+                        <div>Coming soon</div>
+                        <div>Coming soon</div>
+                        <div>Coming soon</div>
+                        <div>Coming soon</div>
+                        <div>Coming soon</div>
+                        <div>Coming soon</div>
+                        <div>Coming soon</div>
+                    </div>
+                </Marquee>
+                <Marquee direction="right" pauseOnHover className="">
+                    <div className="w-full gap-14 flex overflow-hidden text-pretty">
+                        <div>Coming soon</div>
+                        <div>Coming soon</div>
+                        <div>Coming soon</div>
+                        <div>Coming soon</div>
+                        <div>Coming soon</div>
+                        <div>Coming soon</div>
+                        <div>Coming soon</div>
+                    </div>
+                </Marquee>
+                <div
+                    className=" bg-white md:h-screen w-full flex md:flex-row flex-col-reverse
+                 md:justify-start   "
+                >
+                    {/* <ComingSoon /> */}
+
+                    <div className=" px-5 md:px-0 md:pl-10 text-text2 w-full md:flex md:justify-center bg-[#ffffff] md:pt-[px] ">
+                        <div className=" relative  flex md:flex-col text-pretty">
+                            <div className="">
+                                <p className="md:pt-9 pb-2 text-6xl md:text-[100px] md:h-[140px] font-inter font-bold">
+                                    Whoops! 🙂‍↕️
+                                </p>
+
+                                <p className="md:text-7xl text-4xl font-medium font-amster">
+                                    Our developer is currently
+                                </p>
+                                <p className="md:text-7xl text-4xl w-fit font-medium font-amster">
+                                    binge-watching instead of coding. Please be
+                                    patient!
+                                </p>
+                                <p className="md:text-3xl text-5xl  text-pretty font-amster text-blue-500">
+                                    but hey, if you're a developer feel free to
+                                    contribute 🤗
+                                </p>
+                                <motion.a
+                                    initial={{ opacity: 0, x:200 }}
+                                    whileInView={{ opacity: 1, x:0 }}
+                                    transition={{ duration:1, }}
+                                    href="#"
+                                    className=" w-full flex justify-center pt-5 pb-2 scale-125 md:hidden"
+                                >
+                                    <GitHub fontSize="large" />
+                                </motion.a>
+                            </div>
                             <img
-                                className=" animate-spinOnce absolute bottom-36 right-44 w-[200px]"
+                                className="hidden md:flex animate-spinOnce absolute bottom-52 right-44 w-[200px]"
                                 src="/src/assets/pngwing.com.png"
                                 alt=""
                             />
-                            <div className="absolute bottom-20 right-44 animate-bounce delay-300 cursor-pointer">
+                            <div className="absolute md:block hidden    bottom-36 right-44 animate-bounce delay-300 cursor-pointer">
                                 <svg
                                     className="w-[50px] fill-black  hover:fill-blue-500 hover:text-blue-500  font-extrabold"
                                     version="1.1"
@@ -50,7 +90,7 @@ function Construction() {
                         </div>
                     </div>
 
-                    <div className="md:w-[900px] pt-3 flex items-start  ">
+                    <div className="md:w-[900px] md:pt-3 flex md:items-start  ">
                         <img
                             className=" object-contain bg-white"
                             src="/src/assets/watching-removebg.png"
@@ -58,15 +98,21 @@ function Construction() {
                         />
                     </div>
                 </div>
-                <div className="h-52 bg-white flex justify-center ">
+                <div
+                 className="pb-10 bg-white flex justify-center ">
                     {isVisible && (
-                        <div className=" transition-all bg-white relative mt-3 hover:shadow-md hover:-translate-y-[2px] ease-in-out w-[1000px] h-[111px] rounded-lg flex font-inter flex-col items-center justify-center text-text2 p-5 pb-10">
+                        <motion.div
+                        initial={{ opacity: 0, }}
+                                    whileInView={{ opacity: 1, }}
+                                    transition={{ duration:1, }}
+                                    
+                        className=" transition-all bg-white relative mt-3 hover:shadow-md hover:-translate-y-[2px] ease-in-out w-[600px] md:w-[1000px] md:h-[111px] rounded-lg flex font-inter flex-col items-center justify-center text-text2 p-5 pb-10">
                             <p className="text-[18px] animate-appearance-in font-bold">
                                 No Ads here 🤗
                             </p>
-                            <p className=" text-[16px] animate-appearance-in flex">
+                            <p className=" text-[16px] animate-appearance-in md:flex">
                                 Instead, you can give us a
-                                <p className="pl-1 font-semibold text-[#30a1c3] hover:text-title2 cursor-pointer">
+                                <p className="pl-1 text-center font-semibold text-[#30a1c3] hover:text-title2 cursor-pointer">
                                     share on Instagram
                                 </p>
                             </p>
@@ -76,12 +122,10 @@ function Construction() {
                             >
                                 <Close />
                             </button>
-                        </div>
+                        </motion.div>
                     )}
                 </div>
-                <div>
-                    
-                </div>
+                <div></div>
             </div>
         </>
     );

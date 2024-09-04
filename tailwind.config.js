@@ -37,6 +37,10 @@ export default {
                 "load": {
                     "0": {opacity: '0' },
                     "100%": {opacity: '1'}
+                },
+                slidefast: {
+                    "0%": { transform: "translateX(-100%)"},
+                    "100%": { transform: "translateX(0%)"}
                 }
             },
             animation: {
@@ -44,7 +48,8 @@ export default {
                 "loop-scroll": "loop-scroll 100s linear infinite",
                 "slide": "slide 10s linear infinite",
                 spinOnce: 'spinOnce 1s linear 1',
-                "load": 'load 3s linear 1'
+                "load": 'load 3s linear 1',
+                slidefast: 'slidefast 0.3s ease-in 1'
 
             },
             colors: {
@@ -76,7 +81,10 @@ export default {
                 bungee: ["Bungee Tint", "sans-serif"],
                 inter: ["Inter", "sans-serif"],
                 amster: ["New Amsterdam", "sans-serif"],
-                scrible: ["Rubik Scribble"," system-ui"]
+                scrible: ["Rubik Scribble"," system-ui"],
+                jet: ["JetBrains Mono", "monospace"],
+                montserrat: ["Montserrat", "sans-serif"],
+                grotesk: ["Hanken Grotesk", "sans-serif"],
             },
             textShadow: {
                 'sm': '1px 1px 2px rgba(0, 0, 0, 0.5)',

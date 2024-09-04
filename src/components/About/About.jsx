@@ -1,8 +1,9 @@
 import React from 'react'
+import Construction from '../Construction/Construction'
 
 function About() {
   return (
-    <div className=' text-white'>About</div>
+    <Construction/>
     
   )
 }
