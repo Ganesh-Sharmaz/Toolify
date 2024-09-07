@@ -1,0 +1,90 @@
+/* Style for Markdown content */
+#markdown-content {
+    font-family: 'Arial', sans-serif;
+    /* Use a clean, readable font */
+    line-height: 1.6;
+    /* Increase line height for better readability */
+}
+
+/* Headings */
+#markdown-content h1 {
+    font-size: 2em;
+    /* Large font size for main headings */
+    margin-top: 0.5em;
+    margin-botto#: 0.5em;
+    color: #2d3748;
+    /* Dark color for headings */
+}
+
+#markdown-content h2 {
+    font-size: 1.5em;
+    /* Slightly smaller font size for subheadings */
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color: #4a5568;
+    /* Medium color for subheadings */
+}
+
+#markdown-content h3 {
+    font-size: 1.25em;
+    /* Smaller font size for tertiary headings */
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    color: #718096;
+    /* Lighter color for tertiary headings */
+}
+
+/* Text Emphasis */
+#markdown-content strong {
+    font-weight: bold;
+    /* Bold text for strong emphasis */
+}
+
+#markdown-content em {
+    font-style: italic;
+    /* Italic text for emphasis */
+}
+
+/* Lists */
+#markdown-content ul,
+#markdown-content ol {
+    margin-left: 1.5em;
+    /* Indent lists */
+    margin-bottom: 1em;
+}
+
+.markdown-content li {
+    margin-bottom: 0.5em;
+    /* Space between list items */
+}
+
+/* Code blocks */
+#markdown-content pre {
+    background-color: #f7fafc;
+    /* Light background for code blocks */
+    padding: 1em;
+    border-radius: 0.5em;
+    overflow-x: auto;
+    /* Scroll for long lines of code */
+}
+
+#markdown-content code {
+    background-color: #edf2f7;
+    /* Slightly darker background for inline code */
+    padding: 0.2em 0.4em;
+    border-radius: 0.3em;
+}
+
+/* Blockquotes */
+#markdown-content blockquote {
+    border-left: 4px solid #e2e8f0;
+    /* Highlighted border on the left */
+    padding-left: 1em;
+    /* Space between border and text */
+    margin: 1em 0;
+    /* Vertical spacing */
+    font-style: italic;
+    /* Italicize blockquote text */
+    color: #4a5568;
+    /* Medium color for blockquotes */
+}

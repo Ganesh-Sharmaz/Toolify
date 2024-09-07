@@ -78,7 +78,7 @@ function Header() {
                             className={({ isActive }) =>
                                 ` hover:text-icon  ${isActive ? " text-icon " : "text-text2"}`
                             }
-                            to="/construction"
+                            to="/resume"
                         >
                             <Tooltip
                                 title="Resume Builder"
