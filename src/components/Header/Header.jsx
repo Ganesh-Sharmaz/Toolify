@@ -42,7 +42,7 @@ function Header() {
 
 
     return (
-        <div className="  w-full font-inter md:px-10 h-fit pb-2 md:h-fit md:pt-1 bg-background2 text-black  md:flex md:flex-row md:items-center md:justify-between shadow flex flex-col items-center gap-2">
+        <div className=" select-none w-full font-inter md:px-10 h-fit pb-2 md:h-fit md:pt-1 bg-background2 text-black  md:flex md:flex-row md:items-center md:justify-between shadow flex flex-col items-center gap-2">
             <div>
                 <div onClick={handleHome} className=" cursor-pointer text-[70px] font-inter font-bold text-title2  flex   ">
                     <img
